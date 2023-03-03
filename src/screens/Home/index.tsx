@@ -10,6 +10,10 @@ export default function Home() {
 
     }
 
+    function handleParticipantRemove() {
+
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.eventName}>
@@ -35,8 +39,7 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
 
-            <Participant name="Jose" />
-            <Participant name="jasmin"/>
+            <Participant name="Jose" onRemove={handleParticipantRemove}/>
 
         </View>
     )
