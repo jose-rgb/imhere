@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#FFF',
-        fontSize: 24
+        fontSize: 24,
     },
     button: {
         width: 56,
@@ -44,4 +44,9 @@ export const styles = StyleSheet.create({
         marginTop: 36,
         marginBottom: 42,
     },
+    listEmptyText: {
+        color: '#FFF',
+        fontSize: 14,
+        textAlign: 'center',
+    }
 })
