@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 
 import { Participant } from "../../components/Participant";
@@ -5,13 +6,20 @@ import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export default function Home() {
-    const participants = ['Rodrigo', 'Vini', 'JHjose', 'Railan', 'Ana', 'lize', 'vick', 'jaque', 'mimi']
+    const [participants, setParticipants] = useState<string[]>([]);
+    const [participantName, setParticipantName] = useState('');
+
 
     function handleParticipantAdd() {
         //verificacao de nomes repetidos 
-        if(participants.includes('Rodrigo')) {
+        if(participants.includes(participantName)) {
             return Alert.alert('Participante existe', 'Já existe um  participante na lista com esse nome.')
         }
+
+        //add
+        setParticipants(prevState => [...prevState, participantName]);
+        //limpar
+        setParticipantName('');
     }
 
     function handleParticipantRemove(name: String) {
@@ -43,6 +51,8 @@ export default function Home() {
                     placeholder="Nome do participante"
                     placeholderTextColor="#6B6B6B"
                     keyboardType="default"
+                    onChangeText={text => setParticipantName(text)}
+                    value={participantName}
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}> 
